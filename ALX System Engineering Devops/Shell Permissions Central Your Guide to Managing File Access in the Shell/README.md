@@ -26,11 +26,11 @@
   <li><a href="#chown">chown</a></li>
   <li><a href="#chgrp">chgrp</a></li>
   <li><a href="#id">id</a></li>
-  <li><a href="#groups">groups</a></li>
+  <li><a href="#groups">Adding Users and Groups</a></li>
   <li><a href="#whoami">whoami</a></li>
-  <li><a href="#adduser">adduser</a></li>
-  <li><a href="#useradd">useradd</a></li>
-  <li><a href="#addgroup">addgroup</a></li>
+  <li><a href="#adduser">Adding Users and Groups</a></li>
+  <li><a href="#useradd">Adding Users and Groups</a></li>
+  <li><a href="#addgroup">Adding Users and Groups</a></li>
 </ul>
 
 <h3>chmod</h3>
