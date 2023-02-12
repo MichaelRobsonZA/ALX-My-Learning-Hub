@@ -86,13 +86,15 @@ else
 echo "Invalid choice. Please try again."
 fi
 else
-echo "The 'file' command was not executed successfully. Please try again."
+else
+  echo "The 'file' command was not executed successfully. Please try again."
 fi
 
 echo "No problem. You can try again later or move on to another command."
 
 echo "Which command would you like to learn next?"
 read choice
+
 done
 
 echo "Congratulations! You have completed this section of the ALX software engineering course on shell navigation."
