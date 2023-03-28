@@ -1,75 +1,56 @@
 #include "main.h"
 
 /**
- * print_String - print exclusuives string.
- * @val: argumen t.
- * Return: the length of the string.
+ * print_unsigned_integer - Prints Unsigned integers
+ * @list: List of all of the arguments
+ *
+ * Return: The count of the numbers printed.
  */
-int print_String(va_list l)
+
+int print_unsigned_integer(va_list list)
 {
-	register short len = 0;
-	char *res, *s = va_arg(l, char *);
-	int count;
+	/* Get the unsigned integer from the list of arguments */
+	unsigned int num = va_arg(list, unsigned int);
 
-	if (!s)
-		return (_puts(NULL_STRING));
+	/* If the number is zero, print it and return */
+	if (num == 0)
+		return (print_unsgined_number(num));
 
-	/* Loop through each character in the string */
-	for (; *s; s++)
+	/* If the number is less than 1, return -1 */
+	if (num < 1)
+		return (-1);
+
+	/* Otherwise, print the number and return the count */
+	return (print_unsgined_number(num));
+}
+
+
+/**
+ * print_unsgined_number - Prints an unsigned number
+ * @n: The unsigned integer to be printed
+ *
+ * Return: The amount of numbers printed
+ */
+
+int print_unsgined_number(unsigned int n)
+{
+	/* Initialize variables */
+	int div = 1;
+	int len = 0;
+	unsigned int num = n;
+
+	/* Find the divisor for the largest place value of the number */
+	for (; num / div > 9; )
+		div *= 10;
+
+	/* Loop through each digit of the number, printing it and updating the divisor */
+	for (; div != 0; )
 	{
-		/* Check if character is non-alphanumeric on ASCII table */
-		if (isNonAlphaNumeric(*s))
-		{
-			count += _puts("\\x"); /* Print \x as escape sequence */
-			res = convert(*s, 16, 0); /* Convert char to hexadecimal */
-			if (!res[1])
-				len += _putchar('0'); /* Print leading 0 if necessary */
-			len += _puts(res); /* Print the hexadecimal value */
-		}
-		else
-			len += _putchar(*s); /* Print the character as-is */
+		len += _putchar('0' + num / div);
+		num %= div;
+		div /= 10;
 	}
 
 	return (len);
 }
 
-/**
- * isNonAlphaNumeric - determines if char is a non-
- * alphanumeric char on ASCII table
- * @c: input char
- * Return: true or false
- */
-int isNonAlphaNumeric(char c) 
-{
-	/* Check if character is non-alphanumeric on ASCII table */
-	return ((c > 0 && c < 32) || c >= 127);
-}
-
-/**
- * convert - converts number and base into string
- * @num: input number
- * @base: input base
- * @lowercase: flag if hexa values need to be lowercase
- * Return: result string
- */
-char *convert(unsigned long int num, int base, int lowercase)
-{
-	static char *rep;
-	static char buffer[50];
-	char *ptr;
-
-	/* Define hexadecimal conversion values */
-	rep = (lowercase)
-		? "0123456789abcdef"
-		: "0123456789ABCDEF";
-
-	ptr = &buffer[49]; /* Start at end of buffer */
-	*ptr = NUL; /* Set last character as null terminator */
-
-	do {
-		*--ptr = rep[num % base]; /* Convert remainder to hexadecimal */
-		num /= base;
-	} while (num);
-
-	return (ptr); /* Return the converted string */
-}

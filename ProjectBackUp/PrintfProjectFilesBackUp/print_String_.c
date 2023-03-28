@@ -16,10 +16,10 @@ int print_String_EX(va_list l)
         return (_puts(NULL_STRING));
     for (; *s; s++)
     {
-        if (isNonAlphaNumeric(*s)) // Check if character is non-alphanumeric
+        if (isNonAlphaNumeric(*s)) /* Check if character is non-alphanumeric */
         {
-            count += _puts("\\x"); // Print the escape sequence
-            res = convert(*s, 16, 0); // Convert the character to hexadecimal
+            count += _puts("\\x"); /* Print the escape sequence */
+            res = convert(*s, 16, 0); /* Convert the character to hexadecimal */
             if (!res[1])
                 len += _putchar('0');
             len += _puts(res);
@@ -39,7 +39,8 @@ int print_String_EX(va_list l)
 
 int isNonAlphaNumeric(char c) 
 {
-    return ((c > 0 && c < 32) || c >= 127); // Returns true if character is non-alphanumeric
+return ((c > 0 && c < 32) || c >= 127);
+/* Returns true if character is non-alphanumeric */
 }
 
 /**
@@ -68,3 +69,4 @@ char *convert(unsigned long int num, int base, int lowercase)
 
     return (ptr);
 }
+

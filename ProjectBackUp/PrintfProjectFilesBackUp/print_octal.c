@@ -30,7 +30,7 @@ int print_octal(va_list list)
 		num = num / 8; /*  divide num by 8 */
 	}
 	octal_rep[len] = '\0'; /*  add a null terminator to the end of octal_rep */
-	rev_str = rev_string(octal_rep); // reverse octal_rep and assign it to rev_str */
+	rev_str = rev_string(octal_rep); /* reverse octal_rep and assign it to rev_str */
 	if (rev_str == NULL) /*  if rev_str equals NULL */
 		return (-1); /*  return -1 to indicate an error occurred */
 
